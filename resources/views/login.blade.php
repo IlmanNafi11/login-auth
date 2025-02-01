@@ -16,13 +16,14 @@
             e.preventDefault;
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
-            console.log(email + password);
             window.axios.post('/login', {
                     email: email,
                     password: password,
                 })
                 .then(response => {
-                    console.log(response)
+                    console.log(response);
+                    let uri = response.data.redirect;
+                    window.location.href = uri;
                 })
                 .catch(error => {
                     console.log(error)
