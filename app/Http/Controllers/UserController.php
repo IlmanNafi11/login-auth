@@ -30,6 +30,10 @@ class UserController extends Controller
             return response()->json(['message' => 'Email atau password salah'], 401);
         }
 
-        return response()->json($user);
+        return response()->json([
+            'user_id'=> $user->id,
+            'username' => $user->name,
+            'redirect' => '/dashboard'
+        ]);
     }
 }
